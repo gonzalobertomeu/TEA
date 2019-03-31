@@ -6,13 +6,13 @@ if not ret:                                         #si ret es true, se capturo 
     print("Error en la captura del video")
     exit()
 video,vectoreventos = core.procesarvideo(video)     #dibuja puntos en video y guarda el vector de eventos
-file = open("vectoreventos.txt","w")                #el vector de eventos se guarda en un archivo .txt
+file = open("output/vector/vectoreventos.txt","w")                #el vector de eventos se guarda en un archivo .txt
 file.write(str(vectoreventos))
 file.close()
 
 
 vectorsonrisa = math.vector_sonrisa(vectoreventos)  #se procesa el vector sonrisa a partir del vector de eventos
-vs = open("vector_sonrisa.txt","w")
+vs = open("output/vector/vector_sonrisa.txt","w")
 vs.write(str(vectorsonrisa))
 vs.close()
 

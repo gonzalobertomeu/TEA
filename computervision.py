@@ -5,7 +5,7 @@ import numpy as np
 
 def capturarvideo():
     video = []                          #variable que mantiene una lista de fogramas en RAM
-    camara = cv2.VideoCapture(1)        #Abre Camara
+    camara = cv2.VideoCapture(0)        #Abre Camara
     if not camara.isOpened():           #Se fija si pudo abrirse
         print("No se pudo abrir la camara")
         return False, None
@@ -31,7 +31,7 @@ def reproducirvideo(video):
 
 def grabarvideo(video):
     fourcc = cv2.VideoWriter_fourcc(*'XVID')    #codecs de video para guardar el archivo
-    out = cv2.VideoWriter('output.avi',fourcc,30,(640,480))     #se inicializa el escritor de video
+    out = cv2.VideoWriter('output/video/output.avi',fourcc,30,(640,480))     #se inicializa el escritor de video
     for image in video:                 #recorro el video
         out.write(image)                #guardo un fotograma en el archivo 'outpur.avi'
     out.release()                       #libero el escritor
@@ -59,7 +59,7 @@ def procesarvideo(video):               #funcionalidad principal del sistema
             event = shape_to_event(shape)                   #paso de shape a evento (vector de coordenadas)
             vectoreventos.append(event)                     
             for point in event:                               #recorro la forma -> cada ciclo corresponde a un punto
-                print(point)                                  #muestro por consola las coordenadas de cada punto procesado
+                #print(point)                                  #muestro por consola las coordenadas de cada punto procesado
                 cv2.circle(image,point,1,(0,255,255),-1)      #dibujo un circulo en la imagen, con las coordenadas del punto
     return video,vectoreventos                              #retorno el video nuevo con los puntos dibujados, y el vector de eventos para
                                                             #despues procesar los gestos

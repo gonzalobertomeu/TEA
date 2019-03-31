@@ -29,3 +29,28 @@ def graficar(vector):
     plt.ylabel('Modulo Sonrisa')                #Leyenda de Y
     plt.title('Vector Sonrisa')                 #Titulo de la ventana
     plt.show()                                  #Muestra el grafico
+    #plt.savefig('output/graficos/vectorsonrisa.png') 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
