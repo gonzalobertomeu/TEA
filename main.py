@@ -1,5 +1,6 @@
 import computervision as core                       #archivo -> computervision.py
 import analisis as math                             #archivo -> analisis.py
+from diccionario import gestos as gestos             
 
 ret, video = core.capturarvideo()                   #captura video hasta presionar Q
 if not ret:                                         #si ret es true, se capturo sin errores el video
@@ -11,14 +12,22 @@ file.write(str(vectoreventos))
 file.close()
 
 
-vectorsonrisa = math.vector_sonrisa(vectoreventos)  #se procesa el vector sonrisa a partir del vector de eventos
-vs = open("output/vector/vector_sonrisa.txt","w")
-vs.write(str(vectorsonrisa))
-vs.close()
+for gesto, punto in gestos.items():
+    vectorgesto = math.modulo_vector(vectoreventos,punto)
+    gesto_file = open("output/vector/vector_{}.txt".format(gesto),"w")
+    gesto_file.write(str(vectorgesto))
+    gesto_file.close()
+    math.graficar(vectorgesto,gesto)
+math.terminar_grafico()
+
+# vectorsonrisa = math.vector_sonrisa(vectoreventos)  #se procesa el vector sonrisa a partir del vector de eventos
+# vs = open("output/vector/vector_sonrisa.txt","w")
+# vs.write(str(vectorsonrisa))
+# vs.close()
 
 core.reproducirvideo(video)                         #se reproduce el video con los puntos dibujados
 
 core.grabarvideo(video)                             #guarda el video en disco
 
-math.graficar(vectorsonrisa)                        #muestra el grafico con las variaciones del modulo de vector sonrisa
+#math.graficar(vectorsonrisa)                        #muestra el grafico con las variaciones del modulo de vector sonrisa
 
