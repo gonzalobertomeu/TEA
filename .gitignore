@@ -1,3 +1,4 @@
 *.avi
 *.png
+*.dat
 __pycache__/
